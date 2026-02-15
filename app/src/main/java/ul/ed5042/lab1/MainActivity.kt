@@ -43,6 +43,26 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun QcaCalculationLayout(modifier: Modifier = Modifier) {
+    //adding stets for 5modules, 5grades, 5weight(the way i have no idea what weight is 😀)
+    var module1 by remember { mutableStateOf("") }
+    var grade1 by remember { mutableStateOf("") }
+    var weight1 by remember { mutableStateOf("") }
+
+    var module1 by remember { mutableStateOf("") }
+    var grade2 by remember { mutableStateOf("") }
+    var weight2 by remember { mutableStateOf("") }
+
+    var module1 by remember { mutableStateOf("") }
+    var grade3 by remember { mutableStateOf("") }
+    var weight3 by remember { mutableStateOf("") }
+
+    var module1 by remember { mutableStateOf("") }
+    var grade4 by remember { mutableStateOf("") }
+    var weight4 by remember { mutableStateOf("") }
+
+    var module1 by remember { mutableStateOf("") }
+    var grade5 by remember { mutableStateOf("") }
+    var weight5 by remember { mutableStateOf("") }
 
 
     Column(
