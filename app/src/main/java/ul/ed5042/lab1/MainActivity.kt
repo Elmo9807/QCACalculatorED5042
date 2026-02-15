@@ -44,6 +44,30 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun QcaCalculationLayout(modifier: Modifier = Modifier) {
 
+    //Module 1 States
+    var module1 by remember { mutableStateOf("")}
+    var grade1 by remember { mutableStateOf("")}
+    var weight1 by remember { mutableStateOf("")}
+
+    //Module 2 States
+    var module2 by remember { mutableStateOf("")}
+    var grade2 by remember { mutableStateOf("")}
+    var weight2 by remember { mutableStateOf("")}
+
+    //Module 3 States
+    var module3 by remember { mutableStateOf("")}
+    var grade3 by remember { mutableStateOf("")}
+    var weight3 by remember { mutableStateOf("")}
+
+    //Module 4 States
+    var module4 by remember { mutableStateOf("")}
+    var grade4 by remember { mutableStateOf("")}
+    var weight4 by remember { mutableStateOf("")}
+
+    //Module 5 States
+    var module5 by remember { mutableStateOf("")}
+    var grade5 by remember { mutableStateOf("")}
+    var weight5 by remember { mutableStateOf("")}
 
     Column(
         modifier = Modifier
