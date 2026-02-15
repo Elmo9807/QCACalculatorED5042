@@ -48,19 +48,19 @@ fun QcaCalculationLayout(modifier: Modifier = Modifier) {
     var grade1 by remember { mutableStateOf("") }
     var weight1 by remember { mutableStateOf("") }
 
-    var module1 by remember { mutableStateOf("") }
+    var module2 by remember { mutableStateOf("") }
     var grade2 by remember { mutableStateOf("") }
     var weight2 by remember { mutableStateOf("") }
 
-    var module1 by remember { mutableStateOf("") }
+    var module3 by remember { mutableStateOf("") }
     var grade3 by remember { mutableStateOf("") }
     var weight3 by remember { mutableStateOf("") }
 
-    var module1 by remember { mutableStateOf("") }
+    var module4 by remember { mutableStateOf("") }
     var grade4 by remember { mutableStateOf("") }
     var weight4 by remember { mutableStateOf("") }
 
-    var module1 by remember { mutableStateOf("") }
+    var module5 by remember { mutableStateOf("") }
     var grade5 by remember { mutableStateOf("") }
     var weight5 by remember { mutableStateOf("") }
 
@@ -82,10 +82,74 @@ fun QcaCalculationLayout(modifier: Modifier = Modifier) {
             style = MaterialTheme.typography.bodyLarge
         )
 
+        ModuleRow(module1, "Module 1", grade1, weight1,
+        onModuleChange = { newModule ->
+            module1 = newModule
+        },
+        onGradeChange = { newGrade ->
+            grade1 = newGrade
+        },
+        onWeightChange = { newWeight ->
+            weight1 = newWeight
+        }
+        )
+
+        ModuleRow(module2, "Module 2", grade2, weight2,
+            onModuleChange = { newModule ->
+                module2 = newModule
+            },
+            onGradeChange = { newGrade ->
+                grade2 = newGrade
+            },
+            onWeightChange = { newWeight ->
+                weight2 = newWeight
+            }
+        )
+
+        ModuleRow(module3, "Module 3", grade3, weight3,
+            onModuleChange = { newModule ->
+                module3 = newModule
+            },
+            onGradeChange = { newGrade ->
+                grade3 = newGrade
+            },
+            onWeightChange = { newWeight ->
+                weight3 = newWeight
+            }
+        )
+
+        ModuleRow(module4, "Module 4", grade4, weight4,
+            onModuleChange = { newModule ->
+                module4 = newModule
+            },
+            onGradeChange = { newGrade ->
+                grade4 = newGrade
+            },
+            onWeightChange = { newWeight ->
+                weight4 = newWeight
+            }
+        )
+
+        ModuleRow(module5, "Module 5", grade5, weight5,
+            onModuleChange = { newModule ->
+                module5 = newModule
+            },
+            onGradeChange = { newGrade ->
+                grade5 = newGrade
+            },
+            onWeightChange = { newWeight ->
+                weight5 = newWeight
+            }
+        )
+
+        Text(
+            text = "Your QCA:",
+            style = MaterialTheme.typography.bodyLarge
+        )
 
         Text(
             modifier = modifier.testTag("Result"),
-            text = "QCA should appear here",
+            text = result,
             style = MaterialTheme.typography.displayMedium
         )
 
@@ -107,6 +171,7 @@ fun calculateQca(
 
 @Composable
 fun ModuleRow(
+    //from what i can see this one js displays data, so dumb ui component
     moduleInput: String,
     moduleLabel: String,
     gradeInput: String,
