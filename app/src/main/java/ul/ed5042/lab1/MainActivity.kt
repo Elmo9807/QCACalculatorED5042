@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -29,6 +30,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import ul.ed5042.lab1.ui.theme.Lab1Theme
+import ul.ed5042.lab1.ui.theme.Pink40
 import java.util.Locale
 
 class MainActivity : ComponentActivity() {
@@ -64,6 +66,15 @@ fun QcaCalculationLayout(modifier: Modifier = Modifier) {
     var grade5 by remember { mutableStateOf("") }
     var weight5 by remember { mutableStateOf("") }
 
+
+    //call calcQca, convert the weights to ints, use elvis like the man told us to
+    val result = calculateQca(
+        grade1, weight1.toIntOrNull() ?: 0,
+        grade2, weight2.toIntOrNull() ?: 0,
+        grade3, weight3.toIntOrNull() ?: 0,
+        grade4, weight4.toIntOrNull() ?: 0,
+        grade5, weight5.toIntOrNull() ?: 0
+    )
 
     Column(
         modifier = Modifier
@@ -163,7 +174,20 @@ fun calculateQca(
     grade4: String, weight4: Int,
     grade5: String, weight5: Int
 ): String {
-
+    //map grades to qca values? idfk oh wait itsx qpv
+    val gradeMap = mapOf(
+        "F" to 0.0,
+        "D2" to 1.2,
+        "D1" to 1.6,
+        "C3" to 2.0,
+        "C2" to 2.4,
+        "C1" to 2.6,
+        "B3" to 2.8,
+        "B2" to 3.0,
+        "B1" to 3.2,
+        "A2" to 3.6,
+        "A1" to 4.0
+    )
     //return empty string to prevent warnings.
     return ""
 }
