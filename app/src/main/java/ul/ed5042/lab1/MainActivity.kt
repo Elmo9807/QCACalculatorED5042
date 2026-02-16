@@ -188,8 +188,22 @@ fun calculateQca(
         "A2" to 3.6,
         "A1" to 4.0
     )
-    //return empty string to prevent warnings.
-    return ""
+    val totalWeightedQPV =
+        (gradeMap[grade1.uppercase().trim()] ?: 0.0) * weight1 +
+                (gradeMap[grade2.uppercase().trim()] ?: 0.0) * weight2 +
+                (gradeMap[grade3.uppercase().trim()] ?: 0.0) * weight3 +
+                (gradeMap[grade4.uppercase().trim()] ?: 0.0) * weight4 +
+                (gradeMap[grade5.uppercase().trim()] ?: 0.0) * weight5
+
+    val totalECTS = weight1 + weight2 + weight3 + weight4 + weight5
+
+    if(totalECTS == 0) {
+        return "0.00"
+    }
+
+    val qca = totalWeightedQPV / totalECTS
+
+    return String.format(Locale.US, "%.2f", qca)
 }
 
 
