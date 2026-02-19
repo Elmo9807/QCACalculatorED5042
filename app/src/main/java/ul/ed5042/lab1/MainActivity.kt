@@ -174,7 +174,7 @@ fun calculateQca(
     grade4: String, weight4: Int,
     grade5: String, weight5: Int
 ): String {
-    //map grades to qca values? idfk oh wait itsx qpv
+    //map grades to qca values
     val gradeMap = mapOf(
         "F" to 0.0,
         "D2" to 1.2,
@@ -209,7 +209,7 @@ fun calculateQca(
 
 @Composable
 fun ModuleRow(
-    //from what i can see this one js displays data, so dumb ui component
+    //from what i can see this one js displays data
     moduleInput: String,
     moduleLabel: String,
     gradeInput: String,
