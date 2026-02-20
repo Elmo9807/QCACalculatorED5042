@@ -76,6 +76,9 @@ fun QcaCalculationLayout(modifier: Modifier = Modifier) {
         grade5, weight5.toIntOrNull() ?: 0
     )
 
+    val big4Head = listOf(grade1, grade2, grade3, grade4, grade5)
+        .all { it.uppercase().trim() == "A1" }
+
     Column(
         modifier = Modifier
             .statusBarsPadding()
@@ -157,13 +160,18 @@ fun QcaCalculationLayout(modifier: Modifier = Modifier) {
             text = "Your QCA:",
             style = MaterialTheme.typography.bodyLarge
         )
-
-        Text(
-            modifier = modifier.testTag("Result"),
-            text = result,
-            style = MaterialTheme.typography.displayMedium
-        )
-
+        if(big4Head) {
+            Text(
+                text = "Kiki has a giant forehead",
+                style = MaterialTheme.typography.displayMedium
+            )
+        } else {
+            Text(
+                modifier = modifier.testTag("Result"),
+                text = result,
+                style = MaterialTheme.typography.displayMedium
+            )
+        }
     }
 }
 
