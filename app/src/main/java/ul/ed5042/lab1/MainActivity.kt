@@ -188,24 +188,30 @@ fun calculateQca(
         "A2" to 3.6,
         "A1" to 4.0
     )
-    val totalWeightedQPV =
-        (gradeMap[grade1.uppercase().trim()] ?: 0.0) * weight1 +
-                (gradeMap[grade2.uppercase().trim()] ?: 0.0) * weight2 +
-                (gradeMap[grade3.uppercase().trim()] ?: 0.0) * weight3 +
-                (gradeMap[grade4.uppercase().trim()] ?: 0.0) * weight4 +
-                (gradeMap[grade5.uppercase().trim()] ?: 0.0) * weight5
+    //set up lists with input grades and weights
+    val grades = listOf(grade1, grade2, grade3, grade4, grade5)
+    val weights = listOf(weight1, weight2, weight3, weight4, weight5)
 
-    val totalECTS = weight1 + weight2 + weight3 + weight4 + weight5
+    var totalWeightedQPV = 0.0
+    var totalECTS = 0
 
-    if(totalECTS == 0) {
-        return "0.00"
+    //loop over grade list, using grade.indices to define upper bound
+    for (i in grades.indices) {
+        //look up current grade in map, normalise for input convenience
+        //then assign to qpv
+        val qpv = gradeMap[grades[i].uppercase().trim()]
+        //check if qpv is null, if it is, move on to next iteration
+        //if not, perform calculation per formula
+        if (qpv != null) {
+            totalWeightedQPV += qpv * weights[i]
+            totalECTS += weights[i]
+        }
     }
 
-    val qca = totalWeightedQPV / totalECTS
+    if(totalECTS == 0) return "0.00"
 
-    return String.format(Locale.US, "%.2f", qca)
+    return String.format(Locale.US, "%.2f", totalWeightedQPV / totalECTS)
 }
-
 
 @Composable
 fun ModuleRow(
